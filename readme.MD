@@ -1,1 +1,2 @@
-# Compilation of basic data structure classes made with C++
+# C++ Data Structures
+Compilations of basic data structures classes made with C++
