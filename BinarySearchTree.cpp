@@ -1,6 +1,6 @@
 //
 // Created by Vic on 3/1/2021.
-// NOT FINISHED YET
+//
 //
 
 #include <iostream>
@@ -10,7 +10,7 @@ using namespace std;
 class Node {
 private:
     int value;
-    Node *next = NULL;
+    Node *left = NULL, *right = NULL;
 public:
     Node(int val) {
         value = val;
@@ -24,37 +24,57 @@ public:
         Node::value = value;
     }
 
-    Node *getNext() const {
-        return next;
+    Node *getLeft() const {
+        return left;
     }
 
-    void setNext(Node *next) {
-        Node::next = next;
+    void setLeft(Node *left) {
+        Node::left = left;
+    }
+
+    Node *getRight() const {
+        return right;
+    }
+
+    void setRight(Node *right) {
+        Node::right = right;
     }
 };
 
-class LinkedList {
+class BinarySearchTree {
 private:
     Node *root;
 
     void add(int value, Node *currentNode) {
-        if (currentNode->getNext() == NULL) {
-            currentNode->setNext(new Node(value));
-        } else {
-            add(value, currentNode->getNext());
+        // no double value on the entire tree
+        if ( currentNode->getValue() < value){
+            if (currentNode->getRight() == NULL){
+                currentNode->setRight(new Node(value));
+            } else {
+                add(value, currentNode->getRight());
+            }
+        }
+        if ( currentNode->getValue() > value){
+            if (currentNode->getLeft() == NULL){
+                currentNode->setLeft(new Node(value));
+            } else {
+                add(value, currentNode->getLeft());
+            }
         }
     }
 
     void printAll(Node *currentNode) {
-        cout << "(" << currentNode->getValue() << ")";
-        if (currentNode->getNext() != NULL) {
-            cout << "->";
-            printAll(currentNode->getNext());
+        if (currentNode->getLeft() != NULL){
+            printAll(currentNode->getLeft());
+        }
+        cout << currentNode->getValue() << " ";
+        if (currentNode->getRight() != NULL){
+            printAll(currentNode->getRight());
         }
     }
 
 public:
-    LinkedList(int rootValue) {
+    BinarySearchTree(int rootValue) {
         root = new Node(rootValue);
     }
 
@@ -68,11 +88,11 @@ public:
 };
 
 int main() {
-    LinkedList linkedList(5);
-    linkedList.add(7);
-    linkedList.add(9);
-    linkedList.add(12);
-    linkedList.add(19);
-    linkedList.printAll();
+    BinarySearchTree binarySearchTree(10);
+    binarySearchTree.add(5);
+    binarySearchTree.add(15);
+    binarySearchTree.add(7);
+    binarySearchTree.add(12);
+    binarySearchTree.printAll();
     return 0;
 }
