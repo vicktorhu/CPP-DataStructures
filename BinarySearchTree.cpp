@@ -47,15 +47,15 @@ private:
 
     void add(int value, Node *currentNode) {
         // no double value on the entire tree
-        if ( currentNode->getValue() < value){
-            if (currentNode->getRight() == NULL){
+        if (currentNode->getValue() < value) {
+            if (currentNode->getRight() == NULL) {
                 currentNode->setRight(new Node(value));
             } else {
                 add(value, currentNode->getRight());
             }
         }
-        if ( currentNode->getValue() > value){
-            if (currentNode->getLeft() == NULL){
+        if (currentNode->getValue() > value) {
+            if (currentNode->getLeft() == NULL) {
                 currentNode->setLeft(new Node(value));
             } else {
                 add(value, currentNode->getLeft());
@@ -64,11 +64,11 @@ private:
     }
 
     void printAll(Node *currentNode) {
-        if (currentNode->getLeft() != NULL){
+        if (currentNode->getLeft() != NULL) {
             printAll(currentNode->getLeft());
         }
         cout << currentNode->getValue() << " ";
-        if (currentNode->getRight() != NULL){
+        if (currentNode->getRight() != NULL) {
             printAll(currentNode->getRight());
         }
     }
