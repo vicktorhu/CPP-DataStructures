@@ -69,7 +69,7 @@ private:
     }
 
     void insert(int index, int value, Node *currentNode) {
-        if (index == 1) {
+        if (index == 1) { // when reaching one Node before the target
             Node *newNode = new Node(value);
             newNode->setNext(currentNode->getNext());
             currentNode->setNext(newNode);
