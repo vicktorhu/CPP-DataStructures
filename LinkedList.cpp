@@ -12,7 +12,7 @@ private:
     Node *next = NULL;
 public:
     Node(int val) {
-        value = val;
+        value = val; // test
     }
 
     int getValue() const {
