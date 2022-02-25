@@ -7,6 +7,7 @@ int main() {
     int a = 10;
     int *b = &a;
     int c = *b;
+    int **d = &b;
 
     printf("The address of %d is %p. The value is %d.", a, b, c);
     return 0;
